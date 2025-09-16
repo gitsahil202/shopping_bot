@@ -86,7 +86,7 @@ def query_products(filters):
     if "category" in filters and filters["category"]:
         qs = qs.filter(category__icontains=filters["category"])
     if "sub_category" in filters and filters["sub_category"]:
-        qs = qs.filter(type__icontains=filters["sub_category"])
+        qs = qs.filter(sub_category__icontains=filters["sub_category"])
     if "color" in filters and filters["color"]:
         qs = qs.filter(color__icontains=filters["color"])
     if "size" in filters and filters["size"]:
