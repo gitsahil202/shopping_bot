@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 import os
 from database.models import Product
-from utils import get_chat_history, get_bot_reply, extract_filters,query_products,update_chat_history
+from . utils import get_chat_history, get_bot_reply, extract_filters,query_products,update_chat_history
 # Create your views here.
 
 load_dotenv()

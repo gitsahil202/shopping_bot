@@ -81,12 +81,12 @@ def query_products(filters):
     if not filters:
         return []
      
-    qs = Product.objects.all(stock__gt=0)
+    qs = Product.objects.filter(stock__gt=0)
 
     if "category" in filters and filters["category"]:
         qs = qs.filter(category__icontains=filters["category"])
-    if "type" in filters and filters["type"]:
-        qs = qs.filter(type__icontains=filters["type"])
+    if "sub_category" in filters and filters["sub_category"]:
+        qs = qs.filter(type__icontains=filters["sub_category"])
     if "color" in filters and filters["color"]:
         qs = qs.filter(color__icontains=filters["color"])
     if "size" in filters and filters["size"]:
@@ -94,9 +94,9 @@ def query_products(filters):
 
     return [
         {
-            "name": p.name,
+            "name": p.title,
             "price": str(p.price),
-            "type": p.type,
+            "type": p.sub_category,
             "image": p.image.url if p.image else None
         }
         for p in qs
